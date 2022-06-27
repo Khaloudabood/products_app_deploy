@@ -59,4 +59,13 @@ class ProductsController extends Controller
        //return view('products.displayProducts') -> with($data);
 
     }
+
+    public function list()
+    {
+        $data ['products'] = product::all();
+
+        return view('products-list',$data);
+
+
+    }
 }
