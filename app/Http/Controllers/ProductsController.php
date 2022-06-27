@@ -19,7 +19,21 @@ class ProductsController extends Controller
     //
     public function store(Request $request)
     {
-     // return $request;
+     //return $request;
+    //  $request->validate([
+    //     ' product_name' => 'required',
+    //     ' product_type' => 'required',
+    //     ' product_color' => 'required',
+    //     ' description' => 'required',
+    //     ' price' => 'required',
+    //     ' product_section' => 'required',
+    //     'img' => 'required|mimes:png,jpg',
+    //  ]);
+
+    //  $image = $request->img;
+    //  $imageFileName = time() . '.' . $image->extension();
+    //  $image->move(public_path('images'),  $imageFileName);
+
 
         $product = new Product();
         $product -> product_name =$request ->product_name;
@@ -29,10 +43,12 @@ class ProductsController extends Controller
         $product -> price =$request ->price;
         $product -> size =$request ->size;
         $product -> product_section =$request ->product_section;
-        $product -> img =null;
+        $product -> img =$request -> img ;
+       // $imageFileName = time() . '.' . $image->extension();
         $product -> save();
 
-        return back();
+        //return back();
+        return 'Record created successfully';
 
     }
 

@@ -8,7 +8,24 @@
   </head>
 <body>
 
+    <div class="container">
+        <table widthe="80%" border="">
+        <tr>
+            <th>Product Name</th>
 
+            <th>Product image</th>
+
+        </tr>
+        @foreach ($products as $item)
+        <tr>
+        <td>
+        {{$item -> product_name}}
+        </td>
+            <td>
+        <img width="20%" src="{{asset('images')}}/{{$item->img}}" alt="">
+        </td>
+        </tr>
+            @endforeach
 
 
 
