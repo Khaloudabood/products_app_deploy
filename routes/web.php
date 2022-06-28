@@ -25,4 +25,3 @@ Route::get('preview/{id}','ProductsController@store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-

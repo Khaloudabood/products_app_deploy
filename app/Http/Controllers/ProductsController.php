@@ -19,22 +19,7 @@ class ProductsController extends Controller
     //
     public function store(Request $request)
     {
-     //return $request;
-    //  $request->validate([
-    //     ' product_name' => 'required',
-    //     ' product_type' => 'required',
-    //     ' product_color' => 'required',
-    //     ' description' => 'required',
-    //     ' price' => 'required',
-    //     ' product_section' => 'required',
-    //     'img' => 'required|mimes:png,jpg',
-    //  ]);
-
-    //  $image = $request->img;
-    //  $imageFileName = time() . '.' . $image->extension();
-    //  $image->move(public_path('images'),  $imageFileName);
-
-
+   
         $product = new Product();
         $product -> product_name =$request ->product_name;
         $product -> product_type =$request ->product_type;
@@ -51,7 +36,7 @@ class ProductsController extends Controller
             $file -> move('images/', $filename);
             $product -> img = $filename;
         }
-       // $imageFileName = time() . '.' . $image->extension();
+
         $product -> save();
 
         //return back();
