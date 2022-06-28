@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('phone')->nullable;
             $table->integer('number_of_items');
             $table->string('total_price');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }

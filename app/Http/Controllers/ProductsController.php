@@ -19,7 +19,7 @@ class ProductsController extends Controller
     //
     public function store(Request $request)
     {
-   
+
         $product = new Product();
         $product -> product_name =$request ->product_name;
         $product -> product_type =$request ->product_type;
@@ -28,6 +28,7 @@ class ProductsController extends Controller
         $product -> price =$request ->price;
         $product -> size =$request ->size;
         $product -> product_section =$request ->product_section;
+        $issue ->user_id = Auth::user()->id;
         if($request -> hasfile('img'))
         {
             $file = $request ->file('img');
