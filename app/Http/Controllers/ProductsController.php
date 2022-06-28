@@ -43,7 +43,14 @@ class ProductsController extends Controller
         $product -> price =$request ->price;
         $product -> size =$request ->size;
         $product -> product_section =$request ->product_section;
-        $product -> img =$request -> img ;
+        if($request -> hasfile('img'))
+        {
+            $file = $request ->file('img');
+            $extension = $file ->getClientOriginalExtension();
+            $filename = time() . '-' . $extension;
+            $file -> move('images/', $filename);
+            $product -> img = $filename;
+        }
        // $imageFileName = time() . '.' . $image->extension();
         $product -> save();
 
@@ -55,8 +62,8 @@ class ProductsController extends Controller
     public function display()
     {
         $data['products'] = Product::all();
-        return $data;
-       //return view('products.displayProducts') -> with($data);
+       // return $data;
+       return view('products.displayProducts') -> with($data);
 
     }
 
