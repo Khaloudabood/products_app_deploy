@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +19,10 @@ Route::get('/', function () {
 Route::view('products', 'products.index');
 Route::post('products/store', 'ProductsController@store');
 Route::get('displayproducts', 'ProductsController@display');
-Route::get('products-list{id}','ProductsController@list);
+Route::get("products-list{id}","ProductsController@list");
 
+Auth::routes();
+Route::get("/home" , "HomeController@index")->name("home");
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
