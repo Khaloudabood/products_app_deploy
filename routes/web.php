@@ -21,11 +21,12 @@ Route::get('/', function () {
 Route::view('products', 'products.index');
 Route::post('products/store', 'ProductsController@store');
 Route::get('displayproducts', 'ProductsController@display');
-//Route::view('orders', 'products.admin.orders-index');
 Route::get('orders', 'OrderController@index');
+
 //created by thurya
 Route::get('preview/{id}','ProductsController@store');
 Route::view('product-list', 'products.product-list');
+
 //Auth routs
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
