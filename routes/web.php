@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::view('products', 'products.index');
 Route::post('products/store', 'ProductsController@store');
 Route::get('displayproducts', 'ProductsController@display');
-Route::get('products-list/{id}','ProductsController@list);
+Route::get('products-list{id}','ProductsController@list);
 
 Auth::routes();
 
