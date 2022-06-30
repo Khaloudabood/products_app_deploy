@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('total_price');
             $table->string('status');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('product_id');
             $table->timestamps();
         });
     }
