@@ -8,18 +8,15 @@
 
 <body>
 
-
-
 <div class="container">
     <div class="row">
         @foreach  ($users as $item)
         <div class="col md-6">
-            <div class="alert alert-success">{{user->products[0]->img}}</div>
+            <div class="alert alert-success">{{$user->products[0]->img}}</div>
             <hr>
             <ul>
           @foreach($user->products as $product)
-          <il> {{$issue->img}}</il>
-          
+          <li> {{$issue->img}}</li>
           @endforeach
         </ul>
         </div>
@@ -31,19 +28,15 @@
     <div class="row">
         @foreach  ($users as $item)
         <div class="col md-6">
-            <div class="alert alert-success">{{user->products[0]->description}}</div>
+            <div class="alert alert-success">{{$user->products[0]->description}}</div>
             <hr>
             <ul>
           @foreach($user->products as $product)
-          <il> {{$product->description}}</il>
+          <li> {{$product->description}}</li>
           @endforeach
         </ul>
         </div>
     </div>
-    <div class="qib-container"> <button type="button" class="minus qib-button">-</button>
-    <div class="quantity buttons_added">
-         <label class="screen-reader-text" for="quantity_62b98cfac8904">quantity</label> <input type="number" id="quantity_62b98cfac8904" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="الكمية" size="4" placeholder="" inputmode="numeric"></div> 
-    <button type="button" class="plus qib-button">+</button></div>
 </div>
 
 
@@ -57,8 +50,6 @@
   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
 
-<button type="submit" name="add-to-cart" value="324" class="single_add_to_cart_button button alt">add to cart</button>   
-
-
+<button type="submit" value="Submit" >add to the bascket</button>
 </body>
 </html>

@@ -19,21 +19,6 @@ class ProductsController extends Controller
     //
     public function store(Request $request)
     {
-     //return $request;
-    //  $request->validate([
-    //     ' product_name' => 'required',
-    //     ' product_type' => 'required',
-    //     ' product_color' => 'required',
-    //     ' description' => 'required',
-    //     ' price' => 'required',
-    //     ' product_section' => 'required',
-    //     'img' => 'required|mimes:png,jpg',
-    //  ]);
-
-    //  $image = $request->img;
-    //  $imageFileName = time() . '.' . $image->extension();
-    //  $image->move(public_path('images'),  $imageFileName);
-
 
         $product = new Product();
         $product -> product_name =$request ->product_name;
@@ -43,8 +28,16 @@ class ProductsController extends Controller
         $product -> price =$request ->price;
         $product -> size =$request ->size;
         $product -> product_section =$request ->product_section;
-        $product -> img =$request -> img ;
-       // $imageFileName = time() . '.' . $image->extension();
+        $issue ->user_id = Auth::user()->id;
+        if($request -> hasfile('img'))
+        {
+            $file = $request ->file('img');
+            $extension = $file ->getClientOriginalExtension();
+            $filename = time() . '-' . $extension;
+            $file -> move('images/', $filename);
+            $product -> img = $filename;
+        }
+
         $product -> save();
 
         //return back();
@@ -55,8 +48,8 @@ class ProductsController extends Controller
     public function display()
     {
         $data['products'] = Product::all();
-        return $data;
-       //return view('products.displayProducts') -> with($data);
+       // return $data;
+       return view('products.displayProducts') -> with($data);
 
     }
 
