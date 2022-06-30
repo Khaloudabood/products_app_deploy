@@ -12,4 +12,10 @@ class Order extends Model
     {
         return $this->belongsTo(user::class);
     }
+    protected $fill = ['number_of_items', 'total_price', 'status', 'user_id', 'created_at', 'updated_at'];
+
+    public function product()
+    {
+        return $this->belongsTo(product::class);
+    }
 }

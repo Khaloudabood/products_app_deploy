@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -16,11 +17,15 @@ class OrderController extends Controller
        $orders = Order::where('status', '0') ->get();
         return view('products.admin.orders-index') ->with($data);
     }
-}
-//public function display()
-//{
-  //  $data['products'] = Product::all();
-   // return $data;
-   //return view('products.displayProducts') -> with($data);
 
-//}
+    public function view($id)
+    {
+
+
+        $data['orders'] = Order::all();
+        $orders = Order::where('id', $id) ->get();
+        return view('products.admin.orders-view')->with($data);
+
+    }
+}
+

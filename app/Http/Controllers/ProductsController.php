@@ -28,7 +28,7 @@ class ProductsController extends Controller
         $product -> price =$request ->price;
         $product -> size =$request ->size;
         $product -> product_section =$request ->product_section;
-        $issue ->user_id = Auth::user()->id;
+        $product ->user_id = Auth::user()->id;
         if($request -> hasfile('img'))
         {
             $file = $request ->file('img');
@@ -52,12 +52,20 @@ class ProductsController extends Controller
        return view('products.displayProducts') -> with($data);
 
     }
-
-    public function list()
+    //created by Thurya
+    public function show()
     {
-        $data ['products'] = product::all();
+       $data['products']=Product::findOrFail($id);
+       return view('product-list');
 
-        return view('products-list',$data);
+    }
+
+    //created by Thurya
+    public function showprofile()
+    {
+        $affected = DB::table('users')
+              ->where('id', 1)
+              ->update(['votes' => 1]);
 
 
     }
